@@ -7,6 +7,9 @@ import random
 
 
 def euclidean_distance(color1, color2):
+    """
+    returns the Euclidean distance between two colors
+    """
     # Extract RGB components
     r1, g1, b1 = color1
     r2, g2, b2 = color2
@@ -17,6 +20,9 @@ def euclidean_distance(color1, color2):
 
 
 def get_dominant_color(image, k=1):
+    """
+    return the most dominant color of an image
+    """
     # Convert the image to a NumPy array
     image_array = np.array(image)
     # Flatten the array to 1D
@@ -42,6 +48,9 @@ def show_color(color):
 
 
 def get_images_by_colors(images, colors, threshold):
+    """
+    returns a lists of lists of PIL images, every list represent a color associated to object colors
+    """
     images_by_colors = [[] for _ in range(len(colors))]
     for image in images:
         color_index = -1
