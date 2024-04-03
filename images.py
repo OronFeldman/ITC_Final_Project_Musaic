@@ -20,8 +20,11 @@ def load_images_in_directory(directory_path):
 
 def resize_images(images, output_directory, target_width, target_height):
     """
-    receives a list of PIL images and create a new folder with resized images
+    Receives a list of PIL images and creates a new folder with resized images.
     """
+    # Create the output directory if it does not exist
+    os.makedirs(output_directory, exist_ok=True)
+
     for i, image in enumerate(images):
         resized_image = image.resize((target_width, target_height), Image.BICUBIC)
         output_filename = f"{str(i)}_resized.jpg"
@@ -45,7 +48,7 @@ def get_images_by_pixel(images_by_color, target_image, target_colors):
     return images_by_pixel
 
 
-def combine_images(images_by_pixel, target_image, output_path):
+def combine_images(images_by_pixel, target_image):
     """
     returns the final image obtained with images_by_pixel
     """

@@ -21,14 +21,14 @@ def euclidean_distance(color1, color2):
 
 def get_dominant_color(image, k=1):
     """
-    return the most dominant color of an image
+    Return the most dominant color(s) of an image.
     """
     # Convert the image to a NumPy array
     image_array = np.array(image)
     # Flatten the array to 1D
     flattened_array = image_array.reshape((-1, 3))
     # Use k-means clustering to find dominant color
-    kmeans = KMeans(n_clusters=k)
+    kmeans = KMeans(n_clusters=k, n_init=10)  # Set n_init to suppress the warning
     kmeans.fit(flattened_array)
     # Get the RGB values of the dominant color(s)
     dominant_colors = kmeans.cluster_centers_.astype(int)
