@@ -1,7 +1,7 @@
 from colors import *
 from images import *
 
-image_target = "ying_yang.png"
+image_target =
 threshold = 70
 
 current_directory = os.getcwd()
