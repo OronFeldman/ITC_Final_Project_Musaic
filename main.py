@@ -2,6 +2,8 @@ import argparse
 import json
 from inference import inference_func
 from insert_image import insert_image_func
+from colors import *
+from images import *
 
 with open('musaic_conf.json', 'r') as file:
     config = json.load(file)
@@ -28,5 +30,20 @@ def main():
             inference_func(img, CLASSES_DICT, NAMES_DICT)
         except TypeError as e:
             print(f'Error calling {args.method}: {e}\n Image path or array are required.')
+    elif args.method == 'mosaic':
+        folder = args.args[0]
+        target_image = args.args[1]
+        threshold = int(args.args[2])
+        try:
+            resize_images(load_images_in_directory(folder), "resized_images", 50, 50)
+            covers = load_images_in_directory('resized_images')
+            image = Image.open(target_image)
+            colors = image.getcolors()
+            images_by_color = get_images_by_colors(covers, colors, threshold)
+            images = get_images_by_pixel(images_by_color, image, colors)
+            combined_image = combine_images(images, image)
+            combined_image.show()
+        except TypeError as e:
+            print(f'Error calling {args.method}: {e}\nAlbums covers path pixelart image path and threshold required.')
     else:
         print(f'Method {args.method} not found.')
