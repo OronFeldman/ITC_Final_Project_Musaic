@@ -1,6 +1,6 @@
 {
     "help_methods": "For different application features run the following methods:\n1. musaic.py inference - to receive information about your new album.\n2. musaic.py mosaic - to create your new art piece.",
-    "help_args": "The following arguments are required for the 'inference' and 'mosaic' methods:\n1. musaic.py insert_image [album_image_path]\n2. musaic.py mosaic [album_images_path] [pixelart_path]",
+    "help_args": "The following arguments are required for the 'inference' and 'mosaic' methods:\n1. musaic.py insert_image [album_image_path]\n2. musaic.py mosaic [album_images_path] [pixelart_path] [threshold]",
     "classes_dict": {
         "0": 1,
         "1": 10,
