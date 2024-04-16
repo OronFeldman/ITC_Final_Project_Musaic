@@ -1,6 +1,7 @@
 import argparse
 import json
-from inference import inference_func
+import pandas as pd
+from client import ask_inference
 from insert_image import insert_image_func
 from colors import *
 from images import *
@@ -12,9 +13,12 @@ HELP_METHODS = config.get("help_methods")
 HELP_ARGS = config.get("help_args")
 CLASSES_DICT = config.get("classes_dict")
 NAMES_DICT = config.get("names_dict")
+URL = config.get("url")
 
 with open('README.md', 'r') as file:
     APP_DESCRIPTION = file.read()
+
+ALBUM_DF = pd.read_csv('albums_database.csv')
 
 
 def main():
@@ -27,9 +31,9 @@ def main():
     if args.method == 'inference':
         try:
             img = insert_image_func(*args.args)
-            inference_func(img, CLASSES_DICT, NAMES_DICT)
+            ask_inference(img, CLASSES_DICT, NAMES_DICT, URL, ALBUM_DF)
         except TypeError as e:
-            print(f'Error calling {args.method}: {e}\n Image path or array are required.')
+            print(f'Error calling {args.method}: {e}\nImage path or array are required.')
     elif args.method == 'mosaic':
         folder = args.args[0]
         target_image = args.args[1]

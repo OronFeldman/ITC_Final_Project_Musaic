@@ -645,7 +645,7 @@
         "239": "21",
         "305": "Hold That Heat (feat. Travis Scott)",
         "42": "LONDON (feat. J. Cole)",
-        "88": "\"\"",
+        "88": "",
         "181": "Unlimited Love",
         "402": "A Girl Like Me",
         "276": "K-POP",
@@ -1004,6 +1004,7 @@
         "99": "Blood Sugar Sex Magik (Deluxe Edition)",
         "435": "For All The Dogs",
         "68": "One Hot Minute"
-    }
+    },
+    "url": "http://127.0.0.1:5000/predict_album"
 }
 
